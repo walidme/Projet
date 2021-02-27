@@ -2,8 +2,8 @@ public class Player extends Entite {
     private int score;
     private String name;
 
-    public Player(Hitbox h, Coordonnee c, String name) {
-        super(h, c);
+    public Player(Hitbox h, Coordonnee c, String name, int ms) {
+        super(h, c, ms);
         this.name = name;
         this.score = 0;
     }
@@ -29,7 +29,7 @@ public class Player extends Entite {
     }
 
     public static void main(String[] args) {
-        Player p = new Player(new Hitbox(10, 20), new Coordonnee(12, 15), "name");
+        Player p = new Player(new Hitbox(10, 20), new Coordonnee(12, 15), "name", 10);
         p.getHitbox();
     }
 
