@@ -32,5 +32,11 @@ public class Player extends Entite {
         Player p = new Player(new Hitbox(10, 20), new Coordonnee(12, 15), "name", 10);
         p.getHitbox();
     }
-
+  public boolean limite(Bloc bloc){
+    	if(this.moveRight() == true){
+    		if(this.x + this.width < bloc.getX() || this.x + this.width > bloc.getX() + 2 || this.y + this.height <= bloc.getY() || this.y >= bloc.getY() + bloc.getHeight()){return false;}
+    	    else{return true;} //condition du player ou il touche l'obstacle , sinon il ne le touche pas
+    	}else{return false;}	    	
+    }
+    
 }
