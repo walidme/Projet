@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+
 public class Player extends Entite {
     private int score;
     private String name;
@@ -28,9 +31,15 @@ public class Player extends Entite {
         return this.name;
     }
 
-    public static void main(String[] args) {
-        Player p = new Player(new Hitbox(10, 20), new Coordonnee(12, 15), "name", 10);
-        p.getHitbox();
+    public Graphics renderPlayer(Graphics g, int scale) {
+        g.drawRect(scale * coords.getX(), scale * coords.getY(), scale * getHitbox().getWidth(),
+                scale * getHitbox().getHeight());
+
+        g.setColor(Color.BLACK);
+
+        g.fillRect(scale * coords.getX(), scale * coords.getY(), scale * getHitbox().getWidth(),
+                scale * getHitbox().getHeight());
+        return g;
     }
 
 }
