@@ -1,26 +1,28 @@
-// Le code est inspir√© de :
-// https://waytolearnx.com/2020/05/keylistener-java.html
-// https://youtu.be/9sKY5_3HtUc
-// https://waytolearnx.com/2020/05/comment-tracer-des-lignes-rectangles-et-cercles-dans-jframe.html
-// Code r√©alis√© par ROUX Amandine
-
 import java.awt.*;
 import java.awt.event.*;
 
-public class MouvementKeyListener extends Frame implements KeyListener {
+import javax.swing.Timer;
+
+
+public class MouvementKeyListener extends Frame implements KeyListener, ActionListener {
 
     int x, y, w, h;
     int pas = 10; // Le pas du personnage
+    int t = pas;
     Graphics personnage;
-
+   // final Timer saut = new Timer(100,this);
+    
+    final int height = 700;
+    final int width = 1000;
+    final Timer saut = new Timer(100,this);
     public MouvementKeyListener(int vx, int vy, int vw, int vh) {
 
         x = vx;
         y = vy;
         w = vw;
         h = vw;
-
-        setSize(1000, 700);
+        
+        setSize(width, height);
         addKeyListener(this);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
@@ -30,44 +32,91 @@ public class MouvementKeyListener extends Frame implements KeyListener {
     }
 
     public void paint(Graphics personnage) {
+    	super.paintComponents(personnage);
         personnage.drawRect(x, y, w, h);
         personnage.setColor(Color.ORANGE);
         personnage.fillRect(x, y, w, h);
+        
+        
     }
 
     public void keyPressed(KeyEvent ke) {
         int keyCode = ke.getKeyCode();
+        
+        
+        
         switch (keyCode) {
             case KeyEvent.VK_UP:
-                y = y - pas;
+            	saut.setActionCommand("Saut");
+            		saut.stop();
+            		saut.start();
+            	
                 break;
             case KeyEvent.VK_DOWN:
                 y = y + pas;
+                repaint();
+                
                 break;
             case KeyEvent.VK_LEFT:
                 x = x - pas;
+                repaint();
                 break;
             case KeyEvent.VK_RIGHT:
                 x = x + pas;
+                repaint();
                 break;
+            
         }
-        repaint();
-    }
-
+        
+   
+	}
+    	
+    	
+    
     public void keyTyped(KeyEvent ke) {
 
     }
 
     public void keyReleased(KeyEvent ke) {
-
+    	int keyCode = ke.getKeyCode();
+    	switch(keyCode) {
+    	case KeyEvent.VK_UP:
+    		//saut.setActionCommand("ArrÍt");
+    		//saut.stop();
+    		//saut.start();
+    		
+    		
+    		
+    	}
+    		
     }
 
-    public static void main(String[] args) {
-        int x = 500;
-        int y = 500;
-        int w = 50;
-        int h = 50;
-        new MouvementKeyListener(x, y, w, h).show();
-    }
-
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		int ret = 0;
+		if(e.getActionCommand().equals("Saut")) {
+			if((ret<200000)&&(t>0)) {
+				ret++;
+    		if((y<h)||(y>height-h)) {t=-t;}
+    		
+    		y = y-2*t;
+    		
+    		repaint();
+			}
+		
+	}
+		if(e.getActionCommand().equals("ArrÍt")) {
+			
+		
+	}
+    
 }
+    	
+}
+
+    
+
+	
+	
+	
+
