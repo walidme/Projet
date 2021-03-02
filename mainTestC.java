@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 import javafx.application.Platform;
 import javafx.stage.Stage;
-public class main {
+public class mainTestC {
 @SuppressWarnings("deprecation")
 public static void main(String[] args) throws Exception {
 /*String rep = "";
@@ -40,7 +40,7 @@ Scanner scan = new Scanner(System.in);
 
 while(!(rep.equals("q"))){
 	System.out.print("Que voulez-vous faire ?\n");
-	System.out.print("Jouer de la musique (j) | Arrêter la musique (a) | Quitter (q)");
+	System.out.print("Jouer de la musique (j) | ArrÃªter la musique (a) | Quitter (q)");
 	rep = scan.nextLine();
 	switch(rep) {
 	case "j":
@@ -49,9 +49,9 @@ while(!(rep.equals("q"))){
 		m.stop1(); break;
 	case "q":
 		m.stop1();
-		System.out.println("Au revoir et à bientôt !");break;
+		System.out.println("Au revoir et Ã  bientÃ´t !");break;
 	default :
-		System.out.println("Commande erronée.");
+		System.out.println("Commande erronÃ©e.");
 	}
 	
 }
