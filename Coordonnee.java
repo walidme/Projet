@@ -1,26 +1,26 @@
 
 public class Coordonnee {
-    private int verticalY;
-    private int horizontalX;
+    private float verticalY;
+    private float horizontalX;
 
-    public Coordonnee(int x, int y) {
+    public Coordonnee(Float x, Float y) {
         this.horizontalX = x;
         this.verticalY = y;
     }
 
-    public int getX() {
+    public float getX() {
         return horizontalX;
     }
 
-    public int getY() {
+    public float getY() {
         return verticalY;
     }
 
-    public void setX(int xx) {
+    public void setX(float xx) {
         this.horizontalX = xx;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.verticalY = y;
     }
 
